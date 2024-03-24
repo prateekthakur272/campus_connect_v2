@@ -9,6 +9,8 @@ uvicorn = {extras = ["standard"], version = "*"}
 pydantic-settings = "*"
 certifi = "*"
 pymongo = {extras = ["srv"], version = "*"}
+pydantic = {extras = ["email"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
 
