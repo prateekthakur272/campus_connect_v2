@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+pydantic-settings = "*"
+certifi = "*"
+pymongo = {extras = ["srv"], version = "*"}
 
 [dev-packages]
 
