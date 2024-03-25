@@ -11,6 +11,7 @@ certifi = "*"
 pymongo = {extras = ["srv"], version = "*"}
 pydantic = {extras = ["email"], version = "*"}
 passlib = {extras = ["bcrypt"], version = "*"}
+pyjwt = "*"
 
 [dev-packages]
 

@@ -24,3 +24,8 @@ async def signup(user:UserSignUp):
     user_data['password'] = get_hashed_password(user.password)
     client.campus_connect.users.insert_one(user_data)
     return {'message':f'account created!, please verify account by email sent to {user.email}'}
+
+
+@router.post('/signin')
+async def signin(user:UserSignIn):
+    return user
