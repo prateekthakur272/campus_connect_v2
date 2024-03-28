@@ -31,7 +31,7 @@ final darkTheme = ThemeData(
         onError: Colors.white,
         background: Colors.black,
         onBackground: Colors.white,
-        surface: Colors.black,
+        surface: Colors.grey.shade900,
         onSurface: Colors.white),
     dividerTheme: const DividerThemeData(color: Colors.white38)
   );
