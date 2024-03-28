@@ -84,9 +84,12 @@ class AuthScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push('/register');
+                  },
                   style: OutlinedButton.styleFrom(
                     textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    foregroundColor: Theme.of(context).colorScheme.onBackground,
                     backgroundColor: Theme.of(context)
                         .colorScheme
                         .onBackground
