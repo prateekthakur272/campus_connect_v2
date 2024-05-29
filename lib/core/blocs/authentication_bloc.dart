@@ -29,7 +29,7 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc() : super(AuthenticationStateUnauthenticated()) {
     on<LoadAuthenticationState>((event, emit) {
-      emit(AuthenticationStateAuthenticated());
+      emit(AuthenticationStateUnauthenticated());
     });
     on<UserChanges>((event, emit) {});
   }

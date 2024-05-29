@@ -1,5 +1,5 @@
 import 'package:campus_connect_v2/app.dart';
-import 'package:campus_connect_v2/blocs/authentication_bloc.dart';
+import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

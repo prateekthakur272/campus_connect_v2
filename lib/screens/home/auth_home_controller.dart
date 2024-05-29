@@ -1,4 +1,4 @@
-import 'package:campus_connect_v2/blocs/authentication_bloc.dart';
+import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
 import 'package:campus_connect_v2/screens/auth/auth_screen.dart';
 import 'package:campus_connect_v2/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';

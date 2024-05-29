@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:campus_connect_v2/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -98,11 +97,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         height: 200,
                         decoration: BoxDecoration(
-                                  color: colorScheme.surface.withOpacity(.5),
-                                  borderRadius: BorderRadius.circular(16)),
+                            color: colorScheme.surface.withOpacity(.5),
+                            borderRadius: BorderRadius.circular(16)),
                       ),
                       space24,
-                      const Text('Top Features', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
+                      const Text(
+                        'Top Features',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
                       space8,
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -114,7 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                   color: colorScheme.surface.withOpacity(.5),
                                   borderRadius: BorderRadius.circular(16)),
-                              child: Align(alignment: Alignment.bottomRight,child: Image.asset('assets/images/academic.png'),),
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child:
+                                    Image.asset('assets/images/academic.png'),
+                              ),
                             ),
                             space24,
                             Container(
@@ -123,7 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                   color: colorScheme.surface.withOpacity(.5),
                                   borderRadius: BorderRadius.circular(16)),
-                              child: Align(alignment: Alignment.bottomRight,child: Image.asset('assets/images/bus.png'),),
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Image.asset('assets/images/bus.png'),
+                              ),
                             ),
                             space24,
                             Container(
@@ -132,41 +142,50 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                   color: colorScheme.surface.withOpacity(.5),
                                   borderRadius: BorderRadius.circular(16)),
-                              child: Align(alignment: Alignment.bottomRight,child: Image.asset('assets/images/fees.png'),),
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Image.asset('assets/images/fees.png'),
+                              ),
                             ),
                           ],
                         ),
                       ),
                       space24,
-                      const Text('All Services', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
+                      const Text(
+                        'All Services',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
                       space8,
                       Container(
                         decoration: BoxDecoration(
-                          color: colorScheme.surface.withOpacity(.5),
-                          borderRadius: BorderRadius.circular(12)
-                        ),
+                            color: colorScheme.surface.withOpacity(.5),
+                            borderRadius: BorderRadius.circular(12)),
                         child: Column(
                           children: [
                             ListTile(
-                              onTap: (){},
+                              onTap: () {},
                               leading: const Icon(Icons.school),
                               title: const Text('Academics'),
-                              subtitle: const Text('View exam results and performance'),
+                              subtitle: const Text(
+                                  'View exam results and performance'),
                             ),
                             ListTile(
-                              onTap: (){},
+                              onTap: () {},
                               leading: const Icon(Icons.pie_chart),
                               title: const Text('Attendance'),
-                              subtitle: const Text('Track overall and subject wise attendance'),
+                              subtitle: const Text(
+                                  'Track overall and subject wise attendance'),
                             ),
                             ListTile(
-                              onTap: (){},
+                              onTap: () {},
                               leading: const Icon(Icons.payment),
                               title: const Text('Fees Payment'),
-                              subtitle: const Text('Pay fees or download payment reciept'),
+                              subtitle: const Text(
+                                  'Pay fees or download payment reciept'),
                             ),
                             ListTile(
-                              onTap: (){},
+                              onTap: () {},
                               leading: const Icon(Icons.file_open),
                               title: const Text('Syllabus'),
                               subtitle: const Text('download syllabus'),
