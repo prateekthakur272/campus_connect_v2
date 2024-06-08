@@ -1,8 +1,10 @@
+import 'package:campus_connect_v2/constants/constants.dart';
 import 'package:campus_connect_v2/screens/auth/models/user.dart';
 import 'package:campus_connect_v2/screens/home/widgets/home_card.dart';
 import 'package:campus_connect_v2/screens/home/widgets/welcome_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:triton_extensions/triton_extensions.dart';
 
 
@@ -22,11 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: context.colorScheme.background,
         leading: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/profile/');
+              context.push('/profile');
             },
             icon: const Icon(FontAwesomeIcons.solidUser)),
         title: Text(
-          'Campus Connect',
+          AppConstants.appTitle,
           style: context.textTheme.titleMedium,
         ),
       ),
@@ -51,22 +53,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 image: const AssetImage('assets/academics.png'),
                 icon: const Icon(FontAwesomeIcons.userGraduate),
                 onTap: () {
+                  context.push('/academics');
                 },
               ),
-              // HomeCard(
-              //   heading: 'Student Section',
-              //   body: 'Exam form, Course Registration etc.',
-              //   image: const AssetImage('assets/students.png'),
-              //   icon: const Icon(FontAwesomeIcons.userGraduate),
-              //   onTap: () {},
-              // ),
               HomeCard(
                 heading: 'Library',
                 body: 'Track books and dues',
                 image: const AssetImage('assets/library.png'),
                 icon: const Icon(FontAwesomeIcons.book),
                 onTap: () {
+                  context.push('/library');
                 },
+              ),
+              HomeCard(
+                heading: 'Student Section',
+                body: 'Exam form, Course Registration etc.',
+                image: const AssetImage('assets/students.png'),
+                icon: const Icon(FontAwesomeIcons.userGraduate),
+                onTap: () {},
               ),
               HomeCard(
                 heading: 'Fees Payment',
@@ -74,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 image: const AssetImage('assets/fees.png'),
                 icon: const Icon(FontAwesomeIcons.moneyBill),
                 onTap: () {
+                  context.push('/fees-payment');
                 },
               ),
               HomeCard(
@@ -82,6 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 image: const AssetImage('assets/bus.png'),
                 icon: const Icon(FontAwesomeIcons.bus),
                 onTap: () {
+                  context.push('/bus-service');
                 },
               ),
               HomeCard(
@@ -90,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 image: const AssetImage('assets/syllabus.png'),
                 icon: const Icon(FontAwesomeIcons.file),
                 onTap: () {
+                  context.push('/syllabus');
                 },
               ),
             ],
