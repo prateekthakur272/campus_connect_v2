@@ -1,8 +1,7 @@
-import 'dart:developer';
 import 'dart:ui';
-
-import 'package:campus_connect_v2/constants/constants.dart';
+import 'package:campus_connect_v2/constants/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:triton_extensions/triton_extensions.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -54,14 +53,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Create\nAccount',
+                  AppConstants.textCreateAccountHeading,
                   style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                 ),
                 const Text(
-                  'New to Campus Connect',
+                  AppConstants.textCreateAccountSubHeading,
                   style: TextStyle(fontSize: 16),
                 ),
-                space24,
+                24.space,
                 Align(
                   child: Form(
                       key: _formKey,
@@ -69,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         children: [
                           TextFormField(
                             decoration: InputDecoration(
-                              hintText: 'Email',
+                              hintText: AppConstants.hintTextEmail,
                               fillColor:
                                   colorScheme.onBackground.withOpacity(0.1),
                               filled: true,
@@ -78,15 +77,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Email is required';
+                                return AppConstants.validatorTextEmail;
                               }
                               return null;
                             },
                           ),
-                          space24,
+                          24.space,
                           TextFormField(
                             decoration: InputDecoration(
-                              hintText: 'Full Name',
+                              hintText: AppConstants.hintTextFullName,
                               fillColor:
                                   colorScheme.onBackground.withOpacity(0.1),
                               filled: true,
@@ -95,16 +94,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Name is required';
+                                return AppConstants.validatorFullName;
                               }
                               return null;
                             },
                           ),
-                          space24,
+                          24.space,
                           TextFormField(
                             obscureText: _hidePassword,
                             decoration: InputDecoration(
-                                hintText: 'Password',
+                                hintText: AppConstants.hintTextPassword,
                                 fillColor:
                                     colorScheme.onBackground.withOpacity(0.1),
                                 filled: true,
@@ -122,25 +121,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 )),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Password is required';
+                                return AppConstants.validatorPassword;
                               }
                               return null;
                             },
                           ),
-                          space24,
+                          24.space,
                           Row(
                             children: [
                               const Spacer(),
                               const Text(
-                                'Create Account',
+                                AppConstants.textCreateAccount,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600, fontSize: 24),
                               ),
-                              space24,
+                              24.space,
                               IconButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    log('message');
                                   }
                                 },
                                 icon: const Icon(Icons.arrow_forward),

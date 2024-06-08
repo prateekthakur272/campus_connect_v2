@@ -1,8 +1,7 @@
-import 'dart:developer';
 import 'dart:ui';
-
 import 'package:campus_connect_v2/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:triton_extensions/triton_extensions.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -54,14 +53,14 @@ class _LogInScreenState extends State<LogInScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Welcome\nBack',
+                    AppConstants.textGreeting,
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                   const Text(
-                    'Login to Campus Connect',
+                    AppConstants.textLoginToCampusConnect,
                     style: TextStyle(fontSize: 16),
                   ),
-                  space24,
+                  24.space,
                   Align(
                     child: Form(
                         key: _formKey,
@@ -69,7 +68,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           children: [
                             TextFormField(
                               decoration: InputDecoration(
-                                hintText: 'Email',
+                                hintText: AppConstants.hintTextEmail,
                                 fillColor:
                                     colorScheme.onBackground.withOpacity(0.1),
                                 filled: true,
@@ -78,16 +77,16 @@ class _LogInScreenState extends State<LogInScreen> {
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Email is required';
+                                  return AppConstants.validatorTextEmail;
                                 }
                                 return null;
                               },
                             ),
-                            space24,
+                            24.space,
                             TextFormField(
                               obscureText: _hidePassword,
                               decoration: InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: AppConstants.hintTextPassword,
                                   fillColor:
                                       colorScheme.onBackground.withOpacity(0.1),
                                   filled: true,
@@ -105,26 +104,25 @@ class _LogInScreenState extends State<LogInScreen> {
                                   )),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Password is required';
+                                  return AppConstants.validatorPassword;
                                 }
                                 return null;
                               },
                             ),
-                            space24,
+                            24.space,
                             Row(
                               children: [
                                 const Spacer(),
                                 const Text(
-                                  'LogIn',
+                                  AppConstants.textLogin,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 24),
                                 ),
-                                space24,
+                                24.space,
                                 IconButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
-                                      log('message');
                                     }
                                   },
                                   icon: const Icon(Icons.arrow_forward),

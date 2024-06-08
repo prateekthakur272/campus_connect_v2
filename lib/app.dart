@@ -1,4 +1,4 @@
-import 'package:campus_connect_v2/constants/theme.dart';
+import 'package:campus_connect_v2/constants/app_theme.dart';
 import 'package:campus_connect_v2/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
       routerConfig: AppRouter.router,
     );
   }

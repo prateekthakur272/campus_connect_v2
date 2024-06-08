@@ -1,8 +1,8 @@
 import 'dart:ui';
-
-import 'package:campus_connect_v2/constants/constants.dart';
+import 'package:campus_connect_v2/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:triton_extensions/triton_extensions.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -48,11 +48,11 @@ class AuthScreen extends StatelessWidget {
                 size: 70,
               ),
               const Text(
-                'Campus Connect',
+                AppConstants.appTitle,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               Text(
-                'Your perfect collage mate',
+                AppConstants.appIntro,
                 style: TextStyle(
                     fontSize: 16,
                     color: Theme.of(context)
@@ -60,9 +60,9 @@ class AuthScreen extends StatelessWidget {
                         .onBackground
                         .withOpacity(.7)),
               ),
-              space16,
+              16.space,
               const Divider(),
-              space16,
+              16.space,
               SizedBox(
                   width: MediaQuery.of(context).size.width / 1.5,
                   child: ElevatedButton(
@@ -78,9 +78,9 @@ class AuthScreen extends StatelessWidget {
                         foregroundColor: Theme.of(context).colorScheme.surface,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
-                    child: const Text('Login'),
+                    child: const Text(AppConstants.textLogin),
                   )),
-              space24,
+              24.space,
               SizedBox(
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: OutlinedButton(
@@ -99,7 +99,7 @@ class AuthScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Register'),
+                  child: const Text(AppConstants.textRegister),
                 ),
               ),
             ],
