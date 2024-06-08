@@ -10,7 +10,7 @@ class AuthHomeController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(builder: (context, state){
-      if(state is AuthenticationStateAuthenticated){
+      if(state.status == AuthenticationStatus.authenticated){
         return const HomeScreen();
       }
       return const AuthScreen();

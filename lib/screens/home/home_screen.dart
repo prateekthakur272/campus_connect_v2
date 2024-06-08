@@ -1,5 +1,4 @@
 import 'package:campus_connect_v2/constants/constants.dart';
-import 'package:campus_connect_v2/screens/auth/models/user.dart';
 import 'package:campus_connect_v2/screens/home/widgets/home_card.dart';
 import 'package:campus_connect_v2/screens/home/widgets/welcome_card.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView(
         children: [
-          const WelcomeCard(
-            user: User(username: 'Prateek Thakur', phone: '', email: 'prateekthakur272@gmail.com', githubUrl: '', linkedinUrl: '', firstName: 'Prateek', lastName: 'Thakur', ),
-          ),
+          const WelcomeCard(),
           GridView.count(
             padding: 16.padding,
             physics: const NeverScrollableScrollPhysics(),

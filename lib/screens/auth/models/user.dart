@@ -1,19 +1,19 @@
-class User {
-  final String username;
-  final String email;
-  final String firstName;
-  final String lastName;
-  final String phone;
-  final String githubUrl;
-  final String linkedinUrl;
-  const User(
-      {required this.phone,
-        required this.githubUrl,
-        required this.linkedinUrl,
-        required this.username,
-        required this.email,
-        required this.firstName,
-        required this.lastName});
+// class User {
+//   final String username;
+//   final String email;
+//   final String firstName;
+//   final String lastName;
+//   final String phone;
+//   final String githubUrl;
+//   final String linkedinUrl;
+//   const User(
+//       {required this.phone,
+//         required this.githubUrl,
+//         required this.linkedinUrl,
+//         required this.username,
+//         required this.email,
+//         required this.firstName,
+//         required this.lastName});
   //
   // static User? _currentUser;
   //
@@ -166,4 +166,4 @@ class User {
   // static Future<Map<String, String>> get authHeader async {
   //   return {'Authorization': 'Token ${(await getToken())}'};
   // }
-}
+// }
