@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:campus_connect_v2/core/models/models.dart';
 import 'package:campus_connect_v2/screens/auth/repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -68,12 +67,13 @@ class AuthenticationBloc
             avatarUrl: '');
         emit(state.copyWith(
             currentUser: user, status: AuthenticationStatus.authenticated));
+      }else{
+        emit(state.copyWith(status: AuthenticationStatus.unauthenticated));
       }
     });
     on<Login>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));
-      final token = repository.logIn(event.email, event.password);
-      log(token.toString());
+      final token = await repository.logIn(event.email, event.password);
       final User user = User(
           id: '100',
           firstName: 'Prateek',

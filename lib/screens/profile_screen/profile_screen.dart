@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AuthenticationBloc>().add(LogOut());
-                    context.goNamed(AppRoutes.login.name);
+                    context.goNamed(AppRoutes.home.name);
                   },
                 )
               ],

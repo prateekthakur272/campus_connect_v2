@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:campus_connect_v2/core/hive_client/hive_client.dart';
 import 'package:campus_connect_v2/core/http_client/api_client.dart';
 
@@ -19,6 +21,7 @@ class AuthenticationRepository extends _BaseAuthenticationRepository{
       'username': email,
       'password': password
     });
+    log(res.toString());
     final token = res['token'];
     _hiveClient.saveToken(token);
     return token;
