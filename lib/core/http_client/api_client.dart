@@ -5,14 +5,13 @@ class ApiClient {
   final Dio _dio = Dio();
 
   ApiClient() {
-    _dio.options.baseUrl =
-        'https://api.example.com'; // Replace with your API base URL
+
     _dio.options.connectTimeout = const Duration(seconds: 5); // 5 seconds
     _dio.options.receiveTimeout = const Duration(seconds: 3); // 3 seconds
-    _dio.options.headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    };
+    // _dio.options.headers = {
+    //   'Content-Type': 'application/json',
+    //   'Accept': 'application/json'
+    // };
 
     // Add interceptors if needed
     _dio.interceptors.add(InterceptorsWrapper(
@@ -31,6 +30,8 @@ class ApiClient {
       },
     ));
   }
+
+  final baseUrl = 'http://localhost:8000/';
 
   Future<Json> get(String url, [Header? headers]) async {
     final response = await _dio.get(url,

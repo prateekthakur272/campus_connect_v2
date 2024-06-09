@@ -1,7 +1,7 @@
 import 'package:campus_connect_v2/core/navigation/app_routes.dart';
+import 'package:campus_connect_v2/screens/auth/auth_home_builder.dart';
 import 'package:campus_connect_v2/screens/auth/login_screen.dart';
 import 'package:campus_connect_v2/screens/auth/register_screen.dart';
-import 'package:campus_connect_v2/screens/home/auth_home_controller.dart';
 import 'package:campus_connect_v2/screens/profile_screen/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,9 +12,9 @@ class AppRouter {
 
   static final GoRouter _router = GoRouter(routes: [
     GoRoute(
-      name: AppRoutes.start.name,
+      name: AppRoutes.home.name,
       path: '/',
-      builder: (context, state) => const AuthHomeController(),
+      builder: (context, state) => const AuthHomeBuilder(),
       routes: [
         GoRoute(
           name: AppRoutes.login.name,
@@ -33,5 +33,13 @@ class AppRouter {
         ),
       ]
     ),
-  ]);
+  ],
+    // redirect: (context, state) async {
+    //   final status = await context.read<AuthenticationBloc>().state.status;
+    //   if(status == AuthenticationStatus.unauthenticated){
+    //     return '/login';
+    //   }
+    //   return null;
+    // }
+  );
 }

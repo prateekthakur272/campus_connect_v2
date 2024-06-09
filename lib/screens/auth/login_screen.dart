@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:campus_connect_v2/constants/constants.dart';
+import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triton_extensions/triton_extensions.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -13,6 +15,11 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _hidePassword = true;
+
+  final TextEditingController usernameController =
+      TextEditingController(text: 'prateek');
+  final TextEditingController passwordController =
+      TextEditingController(text: 'prateek@123');
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +74,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: Column(
                           children: [
                             TextFormField(
+                              controller: usernameController,
                               decoration: InputDecoration(
                                 hintText: AppConstants.hintTextEmail,
                                 fillColor:
@@ -84,6 +92,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             24.space,
                             TextFormField(
+                              controller: passwordController,
                               obscureText: _hidePassword,
                               decoration: InputDecoration(
                                   hintText: AppConstants.hintTextPassword,
@@ -123,6 +132,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                 IconButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
+                                      context.read<AuthenticationBloc>().add(
+                                          Login(usernameController.text.trim(),
+                                              passwordController.text.trim()));
                                     }
                                   },
                                   icon: const Icon(Icons.arrow_forward),

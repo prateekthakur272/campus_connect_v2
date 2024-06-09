@@ -1,7 +1,9 @@
 import 'package:campus_connect_v2/constants/app_colors.dart';
 import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
+import 'package:campus_connect_v2/core/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:triton_extensions/triton_extensions.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -72,7 +74,10 @@ class ProfileScreen extends StatelessWidget {
                     style: context.textTheme.titleMedium!
                         .copyWith(color: AppColors.error),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    context.read<AuthenticationBloc>().add(LogOut());
+                    context.goNamed(AppRoutes.login.name);
+                  },
                 )
               ],
             ),
