@@ -73,7 +73,7 @@ class AuthenticationBloc
     });
     on<Login>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));
-      final token = await repository.logIn(event.email, event.password);
+      await repository.logIn(event.email, event.password);
       final User user = User(
           id: '100',
           firstName: 'Prateek',
