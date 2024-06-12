@@ -1,7 +1,5 @@
-import 'dart:developer';
-
-import 'package:campus_connect_v2/core/hive_client/hive_client.dart';
-import 'package:campus_connect_v2/core/http_client/api_client.dart';
+import 'package:campus_connect_v2/core/api_client/api_client.dart';
+import 'package:campus_connect_v2/core/services/hive_service.dart';
 
 abstract class _BaseAuthenticationRepository{
   Future<String> logIn(String email, String password);
@@ -12,24 +10,26 @@ abstract class _BaseAuthenticationRepository{
 
 class AuthenticationRepository extends _BaseAuthenticationRepository{
 
-  final HiveClient _hiveClient = HiveClient();
-  final ApiClient _apiClient = ApiClient();
+  final HiveService _hiveClient = HiveService('user-data');
+  final HttpClient _apiClient = HttpClient();
+  final String _baseUrl = 'http://localhost:8000/';
+
+  final String _keyToken = 'token';
 
   @override
   Future<String> logIn(String email, String password) async {
-    final res = await _apiClient.post('${_apiClient.baseUrl}auth/login/', {
+    final res = await _apiClient.post('${_baseUrl}auth/login/', {
       'username': email,
       'password': password
     });
-    log(res.toString());
-    final token = res['token'];
-    _hiveClient.saveToken(token);
+    final token = res[_keyToken];
+    _hiveClient.storeData(_keyToken, token);
     return token;
   }
 
   @override
   Future<void> logOut() async {
-    await _hiveClient.deleteToken();
+    await _hiveClient.deleteData(_keyToken);
   }
 
   @override
@@ -39,6 +39,6 @@ class AuthenticationRepository extends _BaseAuthenticationRepository{
 
   @override
   Future<String?> getToken() async {
-    return await _hiveClient.getToken();
+    return await _hiveClient.retrieveData(_keyToken);
   }
 }

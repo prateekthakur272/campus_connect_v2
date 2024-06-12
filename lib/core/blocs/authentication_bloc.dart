@@ -1,5 +1,6 @@
 import 'package:campus_connect_v2/core/models/models.dart';
 import 'package:campus_connect_v2/screens/auth/repository/auth_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -73,14 +74,18 @@ class AuthenticationBloc
     });
     on<Login>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));
-      await repository.logIn(event.email, event.password);
-      final User user = User(
-          id: '100',
-          firstName: 'Prateek',
-          lastName: 'Thakur',
-          email: event.email,
-          avatarUrl: '');
-      emit(state.copyWith(status: AuthenticationStatus.authenticated, currentUser: user));
+      try{
+        await repository.logIn(event.email, event.password);
+        final User user = User(
+            id: '100',
+            firstName: 'Prateek',
+            lastName: 'Thakur',
+            email: event.email,
+            avatarUrl: '');
+        emit(state.copyWith(status: AuthenticationStatus.authenticated, currentUser: user));
+      }on DioException catch(e){
+        emit(state.copyWith(status: AuthenticationStatus.failed, errorMessage: e.message));
+      }
     });
     on<LogOut>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));
