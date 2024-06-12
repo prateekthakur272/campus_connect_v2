@@ -1,4 +1,4 @@
-import 'package:campus_connect_v2/core/http_client/typedefs.dart';
+import 'package:campus_connect_v2/core/api_client/api_client.dart';
 import 'package:flutter/cupertino.dart';
 
 @immutable

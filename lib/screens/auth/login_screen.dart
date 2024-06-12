@@ -19,7 +19,7 @@ class _LogInScreenState extends State<LogInScreen> {
   final TextEditingController usernameController =
       TextEditingController(text: 'prateek');
   final TextEditingController passwordController =
-      TextEditingController(text: 'prateek@123');
+      TextEditingController(text: 'prateek@1234');
 
   @override
   Widget build(BuildContext context) {
