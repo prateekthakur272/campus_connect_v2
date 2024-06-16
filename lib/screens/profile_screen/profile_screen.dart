@@ -20,35 +20,40 @@ class ProfileScreen extends StatelessWidget {
               : null,
         ),
         body: ListView(
-          padding: 16.padding,
           children: [
             Column(
               children: [
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://static.wikia.nocookie.net/p__/images/c/cf/JACK_PERSO.png/revision/latest?cb=20210212191647&path-prefix=protagonist'),
-                      radius: 56,
-                    ),
-                    16.space,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          state.currentUser!.fullName,
-                          style: context.textTheme.headlineSmall,
-                        ),
-                        Text(
-                          state.currentUser!.email,
-                          style: context.textTheme.titleSmall,
-                        ),
-                        4.space,
-                        OutlinedButton(
-                            onPressed: () {}, child: const Text('Edit Details'))
-                      ],
-                    )
-                  ],
+                Container(
+                  padding: 16.padding,
+                  decoration: BoxDecoration(
+                    color: context.colorScheme.surface
+                  ),
+                  child: Row(
+                    children: [
+                      const CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://static.wikia.nocookie.net/p__/images/c/cf/JACK_PERSO.png/revision/latest?cb=20210212191647&path-prefix=protagonist'),
+                        radius: 56,
+                      ),
+                      16.space,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.currentUser!.fullName,
+                            style: context.textTheme.headlineSmall,
+                          ),
+                          Text(
+                            state.currentUser!.email,
+                            style: context.textTheme.titleSmall,
+                          ),
+                          4.space,
+                          OutlinedButton(
+                              onPressed: () {}, child: const Text('Edit Details'))
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 24.space,
                 ListTile(
@@ -78,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
                     context.read<AuthenticationBloc>().add(LogOut());
                     context.goNamed(AppRoutes.home.name);
                   },
-                )
+                ),
               ],
             ),
           ],
