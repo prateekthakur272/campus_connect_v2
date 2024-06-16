@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
 import 'package:campus_connect_v2/core/logger/logger.dart';
 import 'package:campus_connect_v2/shared/shared.dart';
+import 'package:campus_connect_v2/shared/widgets/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triton_extensions/triton_extensions.dart';
@@ -125,10 +126,11 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             24.space,
                             if (state.status == AuthenticationStatus.failed)
-                              Text(
-                                state.errorMessage ?? 'Some error occurred',
-                                style: context.textTheme.titleMedium!
-                                    .copyWith(color: context.colorScheme.error),
+                              Column(
+                                children: [
+                                  ErrorMessage(errorMessage: state.errorMessage),
+                                  16.space,
+                                ],
                               ),
                             Row(
                               children: [
