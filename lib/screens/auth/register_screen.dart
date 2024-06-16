@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:campus_connect_v2/constants/app_constants.dart';
+import 'package:campus_connect_v2/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:triton_extensions/triton_extensions.dart';
 

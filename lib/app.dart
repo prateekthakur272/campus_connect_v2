@@ -1,6 +1,7 @@
-import 'package:campus_connect_v2/constants/app_theme.dart';
 import 'package:campus_connect_v2/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
+
+import 'shared/app_theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

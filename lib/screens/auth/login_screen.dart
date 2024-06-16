@@ -1,7 +1,7 @@
 import 'dart:ui';
-import 'package:campus_connect_v2/constants/constants.dart';
 import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
 import 'package:campus_connect_v2/core/logger/logger.dart';
+import 'package:campus_connect_v2/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triton_extensions/triton_extensions.dart';
