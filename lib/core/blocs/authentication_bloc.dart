@@ -1,8 +1,11 @@
+import 'package:campus_connect_v2/core/api_client/api_client.dart';
+import 'package:campus_connect_v2/core/logger/logger.dart';
 import 'package:campus_connect_v2/core/models/models.dart';
 import 'package:campus_connect_v2/screens/auth/repository/auth_repository.dart';
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+final _logger = Logger('AuthBloc');
 
 enum AuthenticationStatus {
   authenticated,
@@ -68,24 +71,28 @@ class AuthenticationBloc
             avatarUrl: '');
         emit(state.copyWith(
             currentUser: user, status: AuthenticationStatus.authenticated));
-      }else{
+      } else {
         emit(state.copyWith(status: AuthenticationStatus.unauthenticated));
       }
     });
     on<Login>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));
-      try{
-        await repository.logIn(event.email, event.password);
+      await repository.logIn(event.email, event.password).then((value) {
+        _logger.log(value);
         final User user = User(
             id: '100',
             firstName: 'Prateek',
             lastName: 'Thakur',
             email: event.email,
             avatarUrl: '');
-        emit(state.copyWith(status: AuthenticationStatus.authenticated, currentUser: user));
-      }on DioException catch(e){
-        emit(state.copyWith(status: AuthenticationStatus.failed, errorMessage: e.message));
-      }
+        emit(state.copyWith(
+            status: AuthenticationStatus.authenticated, currentUser: user));
+      }).catchError((error) {
+        error as HttpClientException;
+        _logger.log(error.toString());
+        emit(state.copyWith(
+            status: AuthenticationStatus.failed, errorMessage: error.message));
+      });
     });
     on<LogOut>((event, emit) async {
       emit(state.copyWith(status: AuthenticationStatus.loading));

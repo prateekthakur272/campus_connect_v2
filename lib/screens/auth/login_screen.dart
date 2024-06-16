@@ -1,9 +1,12 @@
 import 'dart:ui';
 import 'package:campus_connect_v2/constants/constants.dart';
 import 'package:campus_connect_v2/core/blocs/authentication_bloc.dart';
+import 'package:campus_connect_v2/core/logger/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triton_extensions/triton_extensions.dart';
+
+final _logger = Logger('LoginScreen');
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -24,6 +27,8 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final state = context.read<AuthenticationBloc>().state;
+    _logger.log(state.toString());
     return Scaffold(
       body: SafeArea(
         child: Stack(alignment: Alignment.center, children: [
@@ -119,6 +124,12 @@ class _LogInScreenState extends State<LogInScreen> {
                               },
                             ),
                             24.space,
+                            if (state.status == AuthenticationStatus.failed)
+                              Text(
+                                state.errorMessage ?? 'Some error occurred',
+                                style: context.textTheme.titleMedium!
+                                    .copyWith(color: context.colorScheme.error),
+                              ),
                             Row(
                               children: [
                                 const Spacer(),
