@@ -1,5 +1,5 @@
-import 'package:campus_connect_v2/screens/home/widgets/home_card.dart';
-import 'package:campus_connect_v2/screens/home/widgets/welcome_card.dart';
+import 'package:campus_connect_v2/screens/home_screen/widgets/home_card.dart';
+import 'package:campus_connect_v2/screens/home_screen/widgets/welcome_card.dart';
 import 'package:campus_connect_v2/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

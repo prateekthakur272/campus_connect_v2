@@ -1,7 +1,7 @@
 import 'package:campus_connect_v2/core/navigation/app_routes.dart';
-import 'package:campus_connect_v2/screens/auth/auth_home_builder.dart';
-import 'package:campus_connect_v2/screens/auth/login_screen.dart';
-import 'package:campus_connect_v2/screens/auth/register_screen.dart';
+import 'package:campus_connect_v2/screens/auth_screen/auth_home_builder.dart';
+import 'package:campus_connect_v2/screens/auth_screen/login_screen.dart';
+import 'package:campus_connect_v2/screens/auth_screen/register_screen.dart';
 import 'package:campus_connect_v2/screens/profile_screen/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 

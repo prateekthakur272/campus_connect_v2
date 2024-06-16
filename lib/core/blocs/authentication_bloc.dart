@@ -1,7 +1,7 @@
 import 'package:campus_connect_v2/core/api_client/api_client.dart';
 import 'package:campus_connect_v2/core/logger/logger.dart';
 import 'package:campus_connect_v2/core/models/models.dart';
-import 'package:campus_connect_v2/screens/auth/repository/auth_repository.dart';
+import 'package:campus_connect_v2/screens/auth_screen/repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

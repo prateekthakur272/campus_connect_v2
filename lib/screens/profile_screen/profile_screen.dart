@@ -55,7 +55,6 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                24.space,
                 ListTile(
                   leading: const Icon(Icons.lock),
                   title: const Text('Change Password'),
