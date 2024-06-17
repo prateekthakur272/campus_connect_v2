@@ -1,4 +1,5 @@
 import 'package:campus_connect_v2/core/navigation/app_routes.dart';
+import 'package:campus_connect_v2/screens/academics_screen/academics_screen.dart';
 import 'package:campus_connect_v2/screens/auth_screen/auth_home_builder.dart';
 import 'package:campus_connect_v2/screens/auth_screen/login_screen.dart';
 import 'package:campus_connect_v2/screens/auth_screen/register_screen.dart';
@@ -30,6 +31,11 @@ class AppRouter {
           name: AppRoutes.profile.name,
           path: 'profile',
           builder: (context, state) => const ProfileScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.academics.name,
+          path: 'academics',
+          builder: (context, state) => const AcademicsScreen(),
         ),
       ]
     ),

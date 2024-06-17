@@ -1,8 +1,9 @@
 enum AppRoutes{
-  home('/'),
+  home('home'),
   login('login'),
   register('register'),
-  profile('profile');
+  profile('profile'),
+  academics('academics');
   final String name;
   const AppRoutes(this.name);
 }

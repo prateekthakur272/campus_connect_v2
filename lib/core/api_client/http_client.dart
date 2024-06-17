@@ -18,7 +18,11 @@ class HttpClient {
       },
       onResponse: (response, handler) {
         logger.log(response.data.runtimeType.toString());
-        response.data as Json;
+        if(response.data.runtimeType is! Json){
+          response.data = {
+            'data': response.data
+          };
+        }
         return handler.next(response);
       },
       onError: (DioException e, handler) {
