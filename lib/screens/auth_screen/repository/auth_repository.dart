@@ -6,6 +6,7 @@ abstract class _BaseAuthenticationRepository{
   Future<void> register(String email, String password);
   Future<void> logOut();
   Future<String?> getToken();
+  Future<Header> getAuthHeader();
 }
 
 class AuthenticationRepository extends _BaseAuthenticationRepository{
@@ -13,7 +14,6 @@ class AuthenticationRepository extends _BaseAuthenticationRepository{
   final HiveService _hiveClient = HiveService('user-data');
   final HttpClient _apiClient = HttpClient();
   final String _baseUrl = 'http://localhost:8000/';
-
   final String _keyToken = 'token';
 
   @override
@@ -40,5 +40,11 @@ class AuthenticationRepository extends _BaseAuthenticationRepository{
   @override
   Future<String?> getToken() async {
     return await _hiveClient.retrieveData(_keyToken);
+  }
+
+  @override
+  Future<Header> getAuthHeader() async {
+    final String token = await getToken()??'';
+    return {'Authorization' : 'Token $token'};
   }
 }

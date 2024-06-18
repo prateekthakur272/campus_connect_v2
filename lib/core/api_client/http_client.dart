@@ -17,8 +17,7 @@ class HttpClient {
         return handler.next(options);
       },
       onResponse: (response, handler) {
-        logger.log(response.data.runtimeType.toString());
-        if(response.data.runtimeType is! Json){
+        if(response.data is! Map<String, dynamic>){
           response.data = {
             'data': response.data
           };
@@ -26,7 +25,6 @@ class HttpClient {
         return handler.next(response);
       },
       onError: (DioException e, handler) {
-        logger.error(e);
         return handler.next(e);
       },
     ));
