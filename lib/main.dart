@@ -10,8 +10,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
-  final AuthenticationRepository authenticationRepository = AuthenticationRepository();
-  runApp(BlocProvider<AuthenticationBloc>(
-      create: (BuildContext context) => AuthenticationBloc(authenticationRepository),
-      child: const MyApp()));
+  final AuthenticationRepository authenticationRepository =
+      AuthenticationRepository();
+  runApp(MultiRepositoryProvider(
+    providers: [
+      RepositoryProvider(create: (context) => authenticationRepository)
+    ],
+    child: BlocProvider<AuthenticationBloc>(
+        create: (BuildContext context) =>
+            AuthenticationBloc(context.read<AuthenticationRepository>()),
+        child: const MyApp()),
+  ));
 }
