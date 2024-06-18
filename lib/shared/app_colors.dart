@@ -29,4 +29,7 @@ class AppColors{
   static const Color onBackgroundDark = Colors.white;
   static final Color surfaceDark = Colors.grey.shade900;
   static const Color onSurfaceDark = Colors.white;
+
+  static final Color positive = Colors.green.shade400;
+  static final Color negative = Colors.red.shade300;
 }

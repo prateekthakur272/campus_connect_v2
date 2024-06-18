@@ -17,4 +17,6 @@ class AppConstants{
   static const textCreateAccount = 'Create Account';
   static const textCreateAccountHeading = 'Create\nAccount';
   static const textCreateAccountSubHeading = 'New to Campus Connect';
+  // Academics Screen
+  static const textTitleAcademics = 'Academics';
 }

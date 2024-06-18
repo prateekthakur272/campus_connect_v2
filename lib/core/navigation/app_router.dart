@@ -1,9 +1,14 @@
 import 'package:campus_connect_v2/core/navigation/app_routes.dart';
 import 'package:campus_connect_v2/screens/academics_screen/academics_screen.dart';
+import 'package:campus_connect_v2/screens/academics_screen/blocs/academics_bloc.dart';
+import 'package:campus_connect_v2/screens/academics_screen/repository/attendance_repository.dart';
+import 'package:campus_connect_v2/screens/academics_screen/repository/subject_repository.dart';
 import 'package:campus_connect_v2/screens/auth_screen/auth_home_builder.dart';
 import 'package:campus_connect_v2/screens/auth_screen/login_screen.dart';
 import 'package:campus_connect_v2/screens/auth_screen/register_screen.dart';
+import 'package:campus_connect_v2/screens/auth_screen/repository/auth_repository.dart';
 import 'package:campus_connect_v2/screens/profile_screen/profile_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -35,7 +40,12 @@ class AppRouter {
         GoRoute(
           name: AppRoutes.academics.name,
           path: 'academics',
-          builder: (context, state) => const AcademicsScreen(),
+          builder: (context, state) => BlocProvider(create: (context){
+            final attendanceRepository = AttendanceRepository();
+            final subjectRepository = SubjectRepository(context.read<AuthenticationRepository>());
+            return AcademicsBloc(attendanceRepository: attendanceRepository, subjectRepository: subjectRepository);
+          },
+          child: const AcademicsScreen()),
         ),
       ]
     ),

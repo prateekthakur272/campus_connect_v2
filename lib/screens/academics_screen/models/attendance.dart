@@ -53,6 +53,14 @@ class OverallAttendance {
     );
   }
 
+  double percentage(){
+    double percentage = 0;
+    attendance.forEach((element) {
+      percentage += element.attendance;
+    });
+    return percentage/attendance.length/100;
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'attendance': attendance.map((e) => e.toJson()).toList(),
