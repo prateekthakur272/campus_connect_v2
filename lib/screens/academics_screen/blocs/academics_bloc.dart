@@ -1,6 +1,7 @@
 import 'package:campus_connect_v2/core/api_client/api_client.dart';
 import 'package:campus_connect_v2/screens/academics_screen/models/models.dart';
 import 'package:campus_connect_v2/screens/academics_screen/repository/attendance_repository.dart';
+import 'package:campus_connect_v2/screens/academics_screen/repository/exam_repository.dart';
 import 'package:campus_connect_v2/screens/academics_screen/repository/subject_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,11 +54,14 @@ class LoadAcademicsData extends AcademicsEvent {}
 class AcademicsBloc extends Bloc<AcademicsEvent, AcademicsState> {
   final AttendanceRepository _attendanceRepository;
   final SubjectRepository _subjectRepository;
+  final ExamRepository _examRepository;
   AcademicsBloc(
       {required AttendanceRepository attendanceRepository,
-      required SubjectRepository subjectRepository})
+      required SubjectRepository subjectRepository,
+      required ExamRepository examRepository})
       : _attendanceRepository = attendanceRepository,
         _subjectRepository = subjectRepository,
+        _examRepository = examRepository,
         super(const AcademicsState(status: AcademicStatus.initial)) {
     on<LoadAcademicsData>((event, emit) async {
       emit(state.copyWith(status: AcademicStatus.loading));

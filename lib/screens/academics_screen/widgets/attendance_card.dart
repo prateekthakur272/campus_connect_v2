@@ -16,7 +16,7 @@ class AttendanceCard extends StatelessWidget {
           final attendance = state.attendance!;
           final overall = attendance.percentage();
           return Card(
-            // surfaceTintColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             elevation: 4,
             clipBehavior: Clip.hardEdge,
             child: Container(
