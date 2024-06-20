@@ -16,8 +16,6 @@ class AttendanceCard extends StatelessWidget {
           final attendance = state.attendance!;
           final overall = attendance.percentage();
           return Card(
-            surfaceTintColor: Colors.transparent,
-            elevation: 4,
             clipBehavior: Clip.hardEdge,
             child: Container(
               constraints: const BoxConstraints(maxWidth: 600),
@@ -26,7 +24,7 @@ class AttendanceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Attendance',
+                    AppConstants.textAttendance,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   16.space,
@@ -57,7 +55,7 @@ class AttendanceCard extends StatelessWidget {
                   ),
                   8.space,
                   ExpansionTile(
-                    title: const Text('View Attandance'),
+                    title: const Text(AppConstants.textViewAttendance),
                     children: attendance.attendance.map((e) {
                       final subject = state.subjects!.firstWhere((element) => element.id == e.subjectId);
                       return ListTile(
@@ -80,15 +78,13 @@ class AttendanceCard extends StatelessWidget {
   String getMessage(double percent) {
     String message = '';
     if (percent < 0.50) {
-      message =
-          'You\'r attendance is too poor, you would not be able to apear in exam if not mantained';
+      message = AppConstants.messagePoorAttendance;
     } else if (percent < 0.75) {
-      message =
-          'You\'r attendance is below 75, please attend classes regularly';
+      message = AppConstants.messageAverageAttendance;
     } else if (percent < 0.85) {
-      message = 'You have mantained good attendance keep going';
+      message = AppConstants.messageGoodAttendance;
     } else {
-      message = 'Excellent attandance keep going';
+      message = AppConstants.messageExcellentAttendance;
     }
     return message;
   }

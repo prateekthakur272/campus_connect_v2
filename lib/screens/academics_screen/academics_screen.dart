@@ -1,5 +1,6 @@
 import 'package:campus_connect_v2/screens/academics_screen/blocs/academics_bloc.dart';
 import 'package:campus_connect_v2/screens/academics_screen/widgets/attendance_card.dart';
+import 'package:campus_connect_v2/screens/academics_screen/widgets/exams_card.dart';
 import 'package:campus_connect_v2/shared/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class AcademicsScreen extends StatelessWidget {
               ),
           body: ListView(
             padding: 16.padding,
-            children: const [AttendanceCard()],
+            children: const [AttendanceCard(), ExamsCard()],
           ),
             ));
   }

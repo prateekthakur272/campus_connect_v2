@@ -1,4 +1,5 @@
 import 'package:campus_connect_v2/core/api_client/api_client.dart';
+import 'package:campus_connect_v2/screens/academics_screen/models/exam.dart';
 import 'package:campus_connect_v2/screens/academics_screen/models/models.dart';
 import 'package:campus_connect_v2/screens/academics_screen/repository/attendance_repository.dart';
 import 'package:campus_connect_v2/screens/academics_screen/repository/exam_repository.dart';
@@ -18,28 +19,33 @@ class AcademicsState extends Equatable {
   final AcademicStatus status;
   final List<Subject>? subjects;
   final OverallAttendance? attendance;
+  final List<Exam>? exams;
   final String? errorMessage;
 
   const AcademicsState(
       {required this.status,
       this.subjects,
       this.attendance,
+      this.exams,
       this.errorMessage});
 
   AcademicsState copyWith(
       {AcademicStatus? status,
       List<Subject>? subjects,
       OverallAttendance? attendance,
+      List<Exam>? exams,
       String? errorMessage}) {
     return AcademicsState(
         status: status ?? this.status,
         subjects: subjects ?? this.subjects,
         attendance: attendance ?? this.attendance,
+        exams: exams ?? this.exams,
         errorMessage: errorMessage ?? this.errorMessage);
   }
 
   @override
-  List<Object?> get props => [status, subjects, attendance, errorMessage];
+  List<Object?> get props =>
+      [status, subjects, attendance, exams, errorMessage];
 }
 
 // Events
@@ -68,10 +74,12 @@ class AcademicsBloc extends Bloc<AcademicsEvent, AcademicsState> {
       try {
         final subjects = await _subjectRepository.getAllSubjects();
         final attendance = await _attendanceRepository.getOverallAttendance();
+        final exams = await _examRepository.getAllExams();
         emit(state.copyWith(
             status: AcademicStatus.success,
             subjects: subjects,
-            attendance: attendance));
+            attendance: attendance,
+            exams: exams));
       } on HttpClientException catch (e) {
         logger.log(e.toString());
         emit(state.copyWith(
