@@ -1,9 +1,7 @@
 import 'package:campus_connect_v2/core/navigation/app_routes.dart';
 import 'package:campus_connect_v2/screens/academics_screen/academics_screen.dart';
 import 'package:campus_connect_v2/screens/academics_screen/blocs/academics_bloc.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/attendance_repository.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/exam_repository.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/subject_repository.dart';
+import 'package:campus_connect_v2/screens/academics_screen/repository/academics_repository.dart';
 import 'package:campus_connect_v2/screens/auth_screen/auth_home_builder.dart';
 import 'package:campus_connect_v2/screens/auth_screen/login_screen.dart';
 import 'package:campus_connect_v2/screens/auth_screen/register_screen.dart';
@@ -44,15 +42,8 @@ class AppRouter {
               path: 'academics',
               builder: (context, state) => BlocProvider(
                   create: (context) {
-                    final attendanceRepository = AttendanceRepository();
-                    final subjectRepository = SubjectRepository(
-                        context.read<AuthenticationRepository>());
-                    final examRepository = ExamRepository(
-                        context.read<AuthenticationRepository>());
-                    return AcademicsBloc(
-                        attendanceRepository: attendanceRepository,
-                        subjectRepository: subjectRepository,
-                        examRepository: examRepository);
+                    final AcademicsRepository academicsRepo = AcademicsRepository(context.read<AuthenticationRepository>());
+                    return AcademicsBloc(academicsRepository: academicsRepo);
                   },
                   child: const AcademicsScreen()),
             ),

@@ -1,9 +1,7 @@
 import 'package:campus_connect_v2/core/api_client/api_client.dart';
 import 'package:campus_connect_v2/screens/academics_screen/models/exam.dart';
 import 'package:campus_connect_v2/screens/academics_screen/models/models.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/attendance_repository.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/exam_repository.dart';
-import 'package:campus_connect_v2/screens/academics_screen/repository/subject_repository.dart';
+import 'package:campus_connect_v2/screens/academics_screen/repository/academics_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,23 +56,17 @@ class LoadAcademicsData extends AcademicsEvent {}
 
 // Bloc
 class AcademicsBloc extends Bloc<AcademicsEvent, AcademicsState> {
-  final AttendanceRepository _attendanceRepository;
-  final SubjectRepository _subjectRepository;
-  final ExamRepository _examRepository;
+  final AcademicsRepository _academicsRepository;
   AcademicsBloc(
-      {required AttendanceRepository attendanceRepository,
-      required SubjectRepository subjectRepository,
-      required ExamRepository examRepository})
-      : _attendanceRepository = attendanceRepository,
-        _subjectRepository = subjectRepository,
-        _examRepository = examRepository,
+      {required AcademicsRepository academicsRepository})
+      : _academicsRepository = academicsRepository,
         super(const AcademicsState(status: AcademicStatus.initial)) {
     on<LoadAcademicsData>((event, emit) async {
       emit(state.copyWith(status: AcademicStatus.loading));
       try {
-        final subjects = await _subjectRepository.getAllSubjects();
-        final attendance = await _attendanceRepository.getOverallAttendance();
-        final exams = await _examRepository.getAllExams();
+        final subjects = await _academicsRepository.subjectRepository.getAllSubjects();
+        final attendance = await _academicsRepository.attendanceRepository.getOverallAttendance();
+        final exams = await _academicsRepository.examRepository.getAllExams();
         emit(state.copyWith(
             status: AcademicStatus.success,
             subjects: subjects,
